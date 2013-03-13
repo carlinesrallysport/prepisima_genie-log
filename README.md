@@ -6,9 +6,9 @@ Software engineering course slides. Slides are in French and have been presented
 
    * Clone the repo:
 
-   >     git clone git://github.com/jHackTheRipper/prepisima_genie-log.git  
-   >     git submodule update --init
-
+    git clone git://github.com/jHackTheRipper/prepisima_genie-log.git ./prepisima_genie-log  
+    cd prepisima_genie-log/  
+    git submodule update --init
 
    * Open the slides in your favourite web-browser
    * Enjoy! :)
