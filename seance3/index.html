@@ -404,7 +404,7 @@ Date:   Wed Mar 13 09:45:08 2013 +0100
     <slide class="segue dark nobackground">
         <aside class="gdbar bottom"><img src="../google_slides/images/google_developers_icon_128.png"></aside>
         <hgroup class="auto-fadein">
-            <h2>Git: the ultimate versioning tool</h2>
+            <h2>Git - the ultimate versioning tool</h2>
             <h3>Advanced commands: collaborating with other people</h3>
         </hgroup>
     </slide>
@@ -443,21 +443,93 @@ jopasserat@macbook-pro:/tmp/seance3/exo3/prepisima_genie-log$ git commit -am 'No
                 <li>Send changes from your local repository to a remote one</li>
             </ul>
             <pre class="prettyprint" data-lang="bash">
-                jopasserat@macbook-pro:/tmp/seance3/exo3$ git clone git://github.com/jHackTheRipper/prepisima_genie-log.git
-                Cloning into 'prepisima_genie-log'...
-                remote: Counting objects: 22, done.
-                remote: Compressing objects: 100% (16/16), done.
-                remote: Total 22 (delta 6), reused 22 (delta 6)
-                Receiving objects: 100% (22/22), 286.11 KiB | 77 KiB/s, done.
-                Resolving deltas: 100% (6/6), done.
-                jopasserat@macbook-pro:/tmp/seance3/exo3$ cd prepisima_genie-log/
-                jopasserat@macbook-pro:/tmp/seance3/exo3/prepisima_genie-log$ vi README.md
-                jopasserat@macbook-pro:/tmp/seance3/exo3/prepisima_genie-log$ git commit -am 'Now I can tune the README the way I want in my own copy'
-                [master fe5d9b0] Now I can tune the README the way I want in my own copy
-                1 file changed, 2 insertions(+)
+jopasserat@macbook-pro:~/enseignement/genie_log/slides/seance3$ git commit -am 'Add new slides to 3rd class (seance3)'
+[master 5693571] Add new slides to 3rd class (seance3)
+1 file changed, 39 insertions(+), 18 deletions(-)
+jopasserat@macbook-pro:~/enseignement/genie_log/slides/seance3$ git push origin master
+Counting objects: 7, done.
+Delta compression using up to 2 threads.
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 960 bytes, done.
+Total 4 (delta 2), reused 0 (delta 0)
+To git@github.com:jHackTheRipper/prepisima_genie-log.git
+b711a37..5693571  master -> master
             </pre>
         </article>
     </slide>
+    
+    <slide>
+        <hgroup>
+            <h2>git pull</h2>
+        </hgroup>
+        <article>
+            <ul>
+                <li><b>Fetch</b> and <b>merge</b> new commits added to a given remote repository</li>
+            </ul>
+            <pre class="prettyprint" data-lang="bash">
+jopasserat@macbook-pro:/tmp/seance3/exo3/prepisima_genie-log$ git pull origin master
+remote: Counting objects: 7, done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 4 (delta 2), reused 4 (delta 2)
+Unpacking objects: 100% (4/4), done.
+From git://github.com/jHackTheRipper/prepisima_genie-log
+* branch            master     -> FETCH_HEAD
+Merge made by the 'recursive' strategy.
+seance3/index.html |   57 +++++++++++++++++++++++++++++++++++-----------------
+1 file changed, 39 insertions(+), 18 deletions(-)
+            </pre>
+        </article>
+    </slide>
+    
+    <slide>
+        <hgroup>
+            <h2>Resolving conflicts</h2>
+        </hgroup>
+        <article>
+            <ul>
+                <li>Conflicts happen when trying to merge a commit that changes a file you also modified in your working tree</li>
+            </ul>
+            <pre class="prettyprint" data-lang="bash">
+                jopasserat@macbook-pro:/tmp/seance3/exo3/prepisima_genie-log$ git pull origin master
+                remote: Counting objects: 7, done.
+                remote: Compressing objects: 100% (2/2), done.
+                remote: Total 4 (delta 2), reused 4 (delta 2)
+                Unpacking objects: 100% (4/4), done.
+                From git://github.com/jHackTheRipper/prepisima_genie-log
+                * branch            master     -> FETCH_HEAD
+                Merge made by the 'recursive' strategy.
+                seance3/index.html |   57 +++++++++++++++++++++++++++++++++++-----------------
+                1 file changed, 39 insertions(+), 18 deletions(-)
+            </pre>
+        </article>
+    </slide>
+    
+    
+    <slide class="segue dark nobackground">
+        <aside class="gdbar right bottom"><img src="../google_slides/images/google_developers_icon_128.png"></aside>
+        <hgroup class="auto-fadein">
+            <h2>Practical - Exercise 3</h2>
+        </hgroup>
+    </slide>
+    
+    <slide>
+        <hgroup>
+            <h2>Collaborate using git</h2>
+        </hgroup>
+        <article>
+            <ul>
+            <li>Create an account on GitHub (http://www.github.com)</li>
+            <li>Reform the teams of the project</li>
+            <li>One member per team should fork the repository prepisima_genie-log of jHackTheRipper</li>
+            <li>Add your other team mates to the new repository</li>
+            <li>Each team mate can now clone the repository</li>
+            <li>Modify the slides to your convenience and send your changes to your other team mates</li>
+            <li>Check that you all see the changes from your team</li>
+            <li>Guess who's jHackTheRipper and whether he deserves to be followed on GitHub...</li>
+            </ul>
+        </article>
+    </slide>
+
     
     
     <slide class="thank-you-slide segue nobackground">
