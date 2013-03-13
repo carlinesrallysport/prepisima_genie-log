@@ -200,10 +200,6 @@ index e69de29..270c611 100644
             <pre class="prettyprint" data-lang="bash">
 jopasserat@vapula:/tmp/seance3/exo1$ <b>git mv foo pouet</b>
 jopasserat@vapula:/tmp/seance3/exo1$ mkdir dir
-jopasserat@vapula:/tmp/seance3/exo1$ <b>git mv toto</b>
-toto
-jopasserat@vapula:/tmp/seance3/exo1$ <b>git mv toto</b>
-toto
 jopasserat@vapula:/tmp/seance3/exo1$ <b>git mv toto dir/</b>
 jopasserat@vapula:/tmp/seance3/exo1$ <b>git ls-files</b>
 bar
@@ -250,10 +246,12 @@ bar
             <h2>Applying basic git commands</h2>
         </hgroup>
         <article>
-            <p>Get the slides from the two previous classes</p>
-	    <p>Change my name to yours and commit your changes</p>
-	    <p>Compare the differences</p>
-        <p>Play around!</p>
+            <ul>
+        <li>Get the slides from the two previous classes</li>
+	    <li>Change my name to yours and commit your changes</li>
+	    <li>Compare the differences</li>
+        <li>Play around!</li>
+            </ul>
         </article>
     </slide>
     
@@ -394,10 +392,12 @@ Date:   Wed Mar 13 09:45:08 2013 +0100
             <h2>Applying branching git commands</h2>
         </hgroup>
         <article>
-            <p>Get the slides from the two previous classes</p>
-            <p>Create a new branch and try adding some extra slides</p>
-            <p>When you're satisfied with the results merge your branch into master'</p>
-            <p>Delete your branch...</p>
+            <ul>
+            <li>Get the slides from the two previous classes</li>
+            <li>Create a new branch and try adding some extra slides</li>
+            <li>When you're satisfied with the results merge your branch into master</li>
+            <li>Delete your branch...</li>
+            </ul>
         </article>
     </slide>
    
@@ -418,7 +418,8 @@ Date:   Wed Mar 13 09:45:08 2013 +0100
                 <li>Create a local copy of a remote repository by downloading it</li>
             </ul>
             <pre class="prettyprint" data-lang="bash">
-jopasserat@macbook-pro:/tmp/seance3/exo3$ <b>git clone git://github.com/jHackTheRipper/prepisima_genie-log.git</b>
+jopasserat@macbook-pro:/tmp/seance3/exo3$ <b>git clone
+    git://github.com/jHackTheRipper/prepisima_genie-log.git</b>
 Cloning into 'prepisima_genie-log'...
 remote: Counting objects: 22, done.
 remote: Compressing objects: 100% (16/16), done.
@@ -427,7 +428,8 @@ Receiving objects: 100% (22/22), 286.11 KiB | 77 KiB/s, done.
 Resolving deltas: 100% (6/6), done.
 jopasserat@macbook-pro:/tmp/seance3/exo3$ cd prepisima_genie-log/
 jopasserat@macbook-pro:/tmp/seance3/exo3/prepisima_genie-log$ vi README.md
-jopasserat@macbook-pro:/tmp/seance3/exo3/prepisima_genie-log$ <b>git commit -am 'Now I can tune the README the way I want in my own copy'</b>
+jopasserat@macbook-pro:/tmp/seance3/exo3/prepisima_genie-log$ <b>git commit -am 'Now I can
+    tune the README the way I want in my own copy'</b>
 [master fe5d9b0] Now I can tune the README the way I want in my own copy
 1 file changed, 2 insertions(+)
             </pre>
@@ -443,7 +445,8 @@ jopasserat@macbook-pro:/tmp/seance3/exo3/prepisima_genie-log$ <b>git commit -am 
                 <li>Send changes from your local repository to a remote one</li>
             </ul>
             <pre class="prettyprint" data-lang="bash">
-jopasserat@macbook-pro:~/enseignement/genie_log/slides/seance3$ <b>git commit -am 'Add new slides to 3rd class (seance3)'</b>
+jopasserat@macbook-pro:~/enseignement/genie_log/slides/seance3$ <b>git commit -am 'Add new
+    slides to 3rd class (seance3)'</b>
 [master 5693571] Add new slides to 3rd class (seance3)
 1 file changed, 39 insertions(+), 18 deletions(-)
 jopasserat@macbook-pro:~/enseignement/genie_log/slides/seance3$ <b>git push origin master</b>
@@ -494,7 +497,8 @@ seance3/index.html |   57 +++++++++++++++++++++++++++++++++++-----------------
                 
             <li><pre class="prettyprint" data-lang="bash">
 jopasserat@macbook-pro:/tmp/seance3/exo3/prepisima_genie-log$ vi seance3/index.html
-jopasserat@macbook-pro:/tmp/seance3/exo3/prepisima_genie-log$ <b>git commit -am 'My changes that will lead to a conflict'</b>
+jopasserat@macbook-pro:/tmp/seance3/exo3/prepisima_genie-log$ <b>git commit -am 'My changes
+    that will lead to a conflict'</b>
 [master 94647de] My changes that will lead to a conflict
 1 file changed, 1 insertion(+), 1 deletion(-)
 jopasserat@macbook-pro:/tmp/seance3/exo3/prepisima_genie-log$ <b>git pull</b>
@@ -543,7 +547,7 @@ merge conflict'</b>
     
     <slide>
         <hgroup>
-            <h2>Collaborate using git</h2>
+            <h2>Collaborating using git</h2>
         </hgroup>
         <article>
             <ul>
@@ -564,8 +568,8 @@ merge conflict'</b>
     <slide class="thank-you-slide segue nobackground">
     <aside class="gdbar right"><img src="../google_slides/images/google_developers_icon_128.png"></aside>
     <article class="flexbox vleft auto-fadein">
-      <h2>&lt;Merci !&gt;</h2>
-      <p>À la semaine prochaine :)</p>
+      <h2>&lt;Thanks!&gt;</h2>
+      <p>See you next week :)</p>
     </article>
     <p class="auto-fadein" data-config-contact>
       <!-- populated from slide_config.json -->
