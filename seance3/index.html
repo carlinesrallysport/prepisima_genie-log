@@ -1,0 +1,462 @@
+<!--
+Google IO 2012 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahé <lukem@google.com>
+Modified by jH@CKtheRipper, 2/20/13	 
+
+URL: https://code.google.com/p/io-2012-slides
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ISIMA - Prep'ISIMA - Atelier de Génie Logiciel</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" media="all" href="../google_slides/theme/css/default.css">
+  <link rel="stylesheet" media="all" href="./custom.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="../google_slides/theme/css/phone.css">
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script src="./slide_config.js"></script> 
+  <script data-main="../google_slides/js/slides" src="../google_slides/js/require-1.0.8.min.js" ></script>
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+  <slide class="logoslide nobackground">
+    <article class="flexbox vcenter">
+      <span><img src="../google_slides/images/isima.png"></span>
+    </article>
+  </slide>
+
+  <slide class="title-slide segue nobackground">
+    <aside class="gdbar"><img src="../google_slides/images/google_developers_icon_128.png"></aside>
+    <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+    </hgroup>
+  </slide>
+
+
+  <slide class="segue dark nobackground">
+    <aside class="gdbar bottom"><img src="../google_slides/images/google_developers_icon_128.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Git: the ultimate versioning tool</h2>
+      <h3>Basic commands</h3>
+    </hgroup>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>git init</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>Initiate empty repository</li>
+        <li>Use at the top of the folder hierarchy to version</li>
+      </ul>
+        <pre class="prettyprint" data-lang="bash">
+jopasserat@vapula:/tmp$ cd seance3/exo1/
+jopasserat@vapula:/tmp/seance3/exo1$ <b>git init</b>
+Initialized empty Git repository in /private/tmp/seance3/exo1/.git/
+        </pre>
+    </article>
+  </slide>
+
+
+    <slide>
+        <hgroup>
+            <h2>git add <file list> </h2>
+        </hgroup>
+        <article>
+            <ul>
+                <li>Start tracking a file</li>
+                <li>Takes files or whole folders as parameter</li>
+            </ul>
+            <pre class="prettyprint" data-lang="bash">
+jopasserat@vapula:/tmp/seance3/exo1$ ls
+bar	foo	toto
+jopasserat@vapula:/tmp/seance3/exo1$ <b>git add bar</b>
+jopasserat@vapula:/tmp/seance3/exo1$ <b>git add .</b>
+            </pre>
+        </article>
+    </slide>
+    
+    <slide>
+        <hgroup>
+            <h2>git status</h2>
+        </hgroup>
+        <article>
+            <ul>
+                <li>Display the current status of the working tree (what is to be commited, what is staged for commit...)</li>
+            </ul>
+            <pre class="prettyprint" data-lang="bash">
+jopasserat@vapula:/tmp/seance3/exo1$ <b>git status</b>
+# On branch master
+#
+# Initial commit
+#
+# Changes to be committed:
+#   (use "git rm --cached <file>..." to unstage)
+#
+#	new file:   bar
+#	new file:   foo
+#	new file:   toto
+#
+            </pre>
+        </article>
+    </slide>
+
+
+    <slide>
+        <hgroup>
+            <h2>git commit</h2>
+        </hgroup>
+        <article>
+            <ul>
+                <li>One of the most important command!</li>
+                <li>Creates a snapshot of each file staged for commit</li>
+            </ul>
+            <pre class="prettyprint" data-lang="bash">
+jopasserat@vapula:/tmp/seance3/exo1$ <b>git commit bar -m 'First commit of bar file'</b>
+[master (root-commit) 6ba7d15] First commit of bar file
+0 files changed
+create mode 100644 bar
+jopasserat@vapula:/tmp/seance3/exo1$ <b>git commit -am 'Commit the remaining files'</b>
+[master cd2c39c] Commit the remaining files
+0 files changed
+create mode 100644 foo
+create mode 100644 toto
+    </pre>
+        </article>
+    </slide>
+    
+    <slide>
+        <hgroup>
+            <h2>git log</h2>
+        </hgroup>
+        <article>
+            <ul>
+                <li>Browse the commits history</li>
+                <li>Displayed using /usr/bin/less on UNIX (same commands as Vi...)</li>
+            </ul>
+            <pre class="prettyprint" data-lang="bash">
+jopasserat@vapula:/tmp/seance3/exo1$ <b>git log</b>
+commit cd2c39cc6a6bb6a08f3d74c37ecc0dfd71e5d604
+Author: jH@CKtheRipper <passerat@isima.fr>
+Date:   Tue Mar 12 22:48:32 2013 +0100
+    
+    Commit the remaining files
+    
+commit 6ba7d15d3fe75bfe279f51eae81cdb11016afee1
+Author: jH@CKtheRipper <passerat@isima.fr>
+Date:   Tue Mar 12 22:48:03 2013 +0100
+        
+    First commit of bar file
+            </pre>
+        </article>
+    </slide>
+    
+    <slide>
+        <hgroup>
+            <h2>git diff</h2>
+        </hgroup>
+        <article>
+            <ul>
+                <li>Show the changes between the working tree version of a file and a commited version</li>
+                <li>+ for inserted lines</li>
+                <li>- for removed lines</li>
+            </ul>
+            <pre class="prettyprint" data-lang="bash">
+jopasserat@vapula:/tmp/seance3/exo1$ vi bar
+jopasserat@vapula:/tmp/seance3/exo1$ <b>git diff bar</b>
+diff --git a/bar b/bar
+index e69de29..270c611 100644
+--- a/bar
++++ b/bar
+@@ -0,0 +1 @@
++hello, world!
+                        </pre>
+        </article>
+    </slide>
+    
+    <slide>
+        <hgroup>
+            <h2>git mv</h2>
+        </hgroup>
+        <article>
+            <ul>
+                <li>Rename tracked file</li>
+                <li>Move tracked file from one folder to another</li>
+            </ul>
+            <pre class="prettyprint" data-lang="bash">
+jopasserat@vapula:/tmp/seance3/exo1$ <b>git mv foo pouet</b>
+jopasserat@vapula:/tmp/seance3/exo1$ mkdir dir
+jopasserat@vapula:/tmp/seance3/exo1$ <b>git mv toto</b>
+toto
+jopasserat@vapula:/tmp/seance3/exo1$ <b>git mv toto</b>
+toto
+jopasserat@vapula:/tmp/seance3/exo1$ <b>git mv toto dir/</b>
+jopasserat@vapula:/tmp/seance3/exo1$ <b>git ls-files</b>
+bar
+dir/toto
+pouet
+            </pre>
+        </article>
+    </slide>
+    
+    
+    <slide>
+        <hgroup>
+            <h2>git rm</h2>
+        </hgroup>
+        <article>
+            <ul>
+                <li>Remove file form disk</li>
+                <li>Stop tracking a file</li>
+            </ul>
+            <pre class="prettyprint" data-lang="bash">
+jopasserat@vapula:/tmp/seance3/exo1$ <b>git rm pouet</b>
+rm 'pouet'
+jopasserat@vapula:/tmp/seance3/exo1$ ls
+bar	dir
+jopasserat@vapula:/tmp/seance3/exo1$ <b>git rm --cached dir/toto</b>
+rm 'dir/toto'
+jopasserat@vapula:/tmp/seance3/exo1$ ls
+bar	dir
+jopasserat@vapula:/tmp/seance3/exo1$ <b>git ls-files</b>
+bar
+            </pre>
+        </article>
+    </slide>
+    
+  <slide class="segue dark nobackground">
+    <aside class="gdbar right bottom"><img src="../google_slides/images/google_developers_icon_128.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Practical - Exercise 1</h2>
+    </hgroup>
+  </slide>
+    
+    <slide>
+        <hgroup>
+            <h2>Applying basic git commands</h2>
+        </hgroup>
+        <article>
+            <p>Get the slides from the two previous classes</p>
+	    <p>Change my name to yours and commit your changes</p>
+	    <p>Compare the differences</p>
+        <p>Play around!</p>
+        </article>
+    </slide>
+    
+    
+    <slide class="segue dark nobackground">
+        <aside class="gdbar bottom"><img src="../google_slides/images/google_developers_icon_128.png"></aside>
+        <hgroup class="auto-fadein">
+            <h2>Git: the ultimate versioning tool</h2>
+            <h3>Intermediate commands: dealing with branches</h3>
+        </hgroup>
+    </slide>
+
+    <slide>
+        <hgroup>
+            <h2>git branch</h2>
+        </hgroup>
+        <article>
+            <ul>
+                <li>Create a new branch</li>
+                <li>List available branches</li>
+            </ul>
+            <pre class="prettyprint" data-lang="bash">
+jopasserat@macbook-pro:/tmp/seance3/exo2$ <b>git branch</b>
+* master
+jopasserat@macbook-pro:/tmp/seance3/exo2$ <b>git ls-files</b>
+bar
+foo
+toto
+jopasserat@macbook-pro:/tmp/seance3/exo2$ <b>git branch</b>
+* master
+jopasserat@macbook-pro:/tmp/seance3/exo2$ <b>git branch let</b>
+jopasserat@macbook-pro:/tmp/seance3/exo2$ <b>git branch</b>
+let
+* master
+            </pre>
+        </article>
+    </slide>
+    
+    <slide>
+        <hgroup>
+            <h2>git checkout</h2>
+        </hgroup>
+        <article>
+            <ul>
+                <li>Change to given branch</li>
+                <li>Can also create new branches (-b)</li>
+            </ul>
+            <pre class="prettyprint" data-lang="bash">
+jopasserat@macbook-pro:/tmp/seance3/exo2$ <b>git checkout let</b>
+Switched to branch 'let'
+jopasserat@macbook-pro:/tmp/seance3/exo2$ touch pouet
+jopasserat@macbook-pro:/tmp/seance3/exo2$ <b>git add pouet</b>
+jopasserat@macbook-pro:/tmp/seance3/exo2$ <b>git commit pouet -m 'Add new file pouet'</b>
+[let 6e38e6d] Add new file pouet
+0 files changed
+create mode 100644 pouet
+jopasserat@macbook-pro:/tmp/seance3/exo2$ <b>git checkout master</b>
+Switched to branch 'master'
+jopasserat@macbook-pro:/tmp/seance3/exo2$ <b>git log</b>
+commit 3dad27b54e5e32c81339a24683cfc69f5cd699e6
+Author: jH@CKtheRipper <passerat@isima.fr>
+    Date:   Wed Mar 13 09:20:30 2013 +0100
+    
+    Initial commit for exo2
+            </pre>
+        </article>
+    </slide>
+    
+    <slide>
+        <hgroup>
+            <h2>git merge</h2>
+        </hgroup>
+        <article>
+            <ul>
+                <li>Merge given branch into current one</li>
+            </ul>
+            <pre class="prettyprint" data-lang="bash">
+jopasserat@macbook-pro:/tmp/seance3/exo2$ vi toto
+jopasserat@macbook-pro:/tmp/seance3/exo2$ <b>git commit -am 'Add content to toto'</b>
+[master 163b5cc] Add content to toto
+1 file changed, 1 insertion(+)
+jopasserat@macbook-pro:/tmp/seance3/exo2$ <b>git checkout let</b>
+Switched to branch 'let'
+jopasserat@macbook-pro:/tmp/seance3/exo2$ <b>git merge master</b>
+Merge made by the 'recursive' strategy.
+toto |    1 +
+1 file changed, 1 insertion(+)
+jopasserat@macbook-pro:/tmp/seance3/exo2$ <b>git checkout master</b>
+Switched to branch 'master'
+jopasserat@macbook-pro:/tmp/seance3/exo2$ <b>git merge let</b>
+Updating 163b5cc..f5bd56a
+Fast-forward
+0 files changed
+create mode 100644 pouet
+                    </pre>
+        </article>
+    </slide>
+
+    <slide>
+        <hgroup>
+            <h2>git revert</h2>
+        </hgroup>
+        <article>
+            <ul>
+                <li>Add a commit to revert changes from a particular commit </li>
+            </ul>
+            <pre class="prettyprint" data-lang="bash">
+jopasserat@macbook-pro:/tmp/seance3/exo2$ <b>git revert 163b5cc</b>
+[master 079e613] Revert "Add content to toto"
+1 file changed, 1 deletion(-)
+jopasserat@macbook-pro:/tmp/seance3/exo2$ <b>git log</b>
+commit 079e61373807ec29839ed064a943f6ff5b6d8229
+Author: jH@CKtheRipper <passerat@isima.fr>
+Date:   Wed Mar 13 10:08:11 2013 +0100
+    
+    Revert "Add content to toto"
+    
+    This reverts commit 163b5cc12867376275a84f2355d42e412ed317c2.
+...
+commit 163b5cc12867376275a84f2355d42e412ed317c2
+Author: jH@CKtheRipper <passerat@isima.fr>
+Date:   Wed Mar 13 09:45:08 2013 +0100
+            
+    Add content to toto
+            </pre>
+        </article>
+    </slide>
+
+    <slide class="segue dark nobackground">
+        <aside class="gdbar right bottom"><img src="../google_slides/images/google_developers_icon_128.png"></aside>
+        <hgroup class="auto-fadein">
+            <h2>Practical - Exercise 2</h2>
+        </hgroup>
+    </slide>
+    
+    <slide>
+        <hgroup>
+            <h2>Applying branching git commands</h2>
+        </hgroup>
+        <article>
+            <p>Get the slides from the two previous classes</p>
+            <p>Create a new branch and try adding some extra slides</p>
+            <p>When you're satisfied with the results merge your branch into master'</p>
+            <p>Delete your branch...</p>
+        </article>
+    </slide>
+   
+    <slide class="segue dark nobackground">
+        <aside class="gdbar bottom"><img src="../google_slides/images/google_developers_icon_128.png"></aside>
+        <hgroup class="auto-fadein">
+            <h2>Git: the ultimate versioning tool</h2>
+            <h3>Advanced commands: interacting with remote repositories</h3>
+        </hgroup>
+    </slide>
+    
+    <slide>
+        <hgroup>
+            <h2>git clone</h2>
+        </hgroup>
+        <article>
+            <ul>
+                <li>Create a local copy of a remote repository by downloading it</li>
+            </ul>
+            <pre class="prettyprint" data-lang="bash">
+                jopasserat@macbook-pro:/tmp/seance3/exo2$ <b>git revert 163b5cc</b>
+                [master 079e613] Revert "Add content to toto"
+                1 file changed, 1 deletion(-)
+                jopasserat@macbook-pro:/tmp/seance3/exo2$ <b>git log</b>
+                commit 079e61373807ec29839ed064a943f6ff5b6d8229
+                Author: jH@CKtheRipper <passerat@isima.fr>
+                    Date:   Wed Mar 13 10:08:11 2013 +0100
+                    
+                    Revert "Add content to toto"
+                    
+                    This reverts commit 163b5cc12867376275a84f2355d42e412ed317c2.
+                    ...
+                    commit 163b5cc12867376275a84f2355d42e412ed317c2
+                    Author: jH@CKtheRipper <passerat@isima.fr>
+                        Date:   Wed Mar 13 09:45:08 2013 +0100
+                        
+                        Add content to toto
+            </pre>
+        </article>
+    </slide>
+    
+    <slide class="thank-you-slide segue nobackground">
+    <aside class="gdbar right"><img src="../google_slides/images/google_developers_icon_128.png"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <h2>&lt;Merci !&gt;</h2>
+      <p>À la semaine prochaine :)</p>
+    </article>
+    <p class="auto-fadein" data-config-contact>
+      <!-- populated from slide_config.json -->
+    </p>
+  </slide>
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>

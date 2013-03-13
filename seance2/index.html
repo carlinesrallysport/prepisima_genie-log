@@ -1,0 +1,290 @@
+<!--
+Google IO 2012 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahé <lukem@google.com>
+Modified by jH@CKtheRipper, 2/20/13	 
+
+URL: https://code.google.com/p/io-2012-slides
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ISIMA - Prep'ISIMA - Atelier de Génie Logiciel</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" media="all" href="../google_slides/theme/css/default.css">
+  <link rel="stylesheet" media="all" href="./custom.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="../google_slides/theme/css/phone.css">
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script src="./slide_config.js"></script> 
+  <script data-main="../google_slides/js/slides" src="../google_slides/js/require-1.0.8.min.js" ></script>
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+  <slide class="logoslide nobackground">
+    <article class="flexbox vcenter">
+      <span><img src="../google_slides/images/isima.png"></span>
+    </article>
+  </slide>
+
+  <slide class="title-slide segue nobackground">
+    <aside class="gdbar"><img src="../google_slides/images/google_developers_icon_128.png"></aside>
+    <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+    </hgroup>
+  </slide>
+
+
+  <slide class="segue dark nobackground">
+    <aside class="gdbar bottom"><img src="../google_slides/images/google_developers_icon_128.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Le langage de mise en forme LaTeX</h2>
+      <h3>Latex 101</h3>
+      <h3>A short introduction to LaTeX</h3>
+      <h3>A LaTeX 2-hour crashcourse</h3>
+    </hgroup>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Disclaimer</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>Outil: pdflatex</li>
+        <li>Distribution: texlive</li>
+      </ul>
+      <ul class="build">
+          Outils utilisés :
+          <li><b>Vi</b></li>
+          <li>TexMaker (UNIX)</li>
+          <li>Kile (Linux)</li>
+          <li>TeXnicCenter (Windows)</li>
+      </ul>
+    </article>
+  </slide>
+
+
+  <slide>
+    <hgroup>
+      <h2>Hello World!</h2>
+    </hgroup>
+    <article>
+        <pre class="prettyprint" data-lang="latex">
+\documentclass{article} % 3 classes principales de documents :
+                        % article, report, et book
+<b>\begin{document}</b>
+  Hello World!            % Corps du document
+<b>\end{document}</b>   % Quand LaTeX rencontre cette instruction,
+                        % la génération du document est déclenchée
+        </pre>
+        <aside class="note">
+           Faire un zoom sur l'environnement, la syntaxe des macros, le texte brut
+        </aside>
+    </article>
+  </slide>
+
+  <slide class="build">
+    <hgroup>
+      <h2>Qu'est-ce qu'un document LaTeX ?</h2>
+    </hgroup>
+
+    <article>
+        <p>Un programme :</p>
+        <p>
+      <ul>
+        <li>Commentaires</li>
+        <li>Avertissements</li>
+        <li>Erreurs</li>
+        <li>Génie logiciel !</li>
+      </ul>
+        </p>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Structurer un document</h2>
+      <h3>Titre et auteurs</h3>
+    </hgroup>
+   
+    <article>
+        Définition du titre :
+        <pre class="prettyprint" data-lang="latex">
+            \title{Mon super titre}
+        </pre>
+    </article>
+    <article>
+        Définition des auteurs :
+        <pre class="prettyprint" data-lang="latex">
+            \author{Moi bien sûr}
+        </pre>
+    </article>
+    <article>
+        Afficher le tout :
+        <pre class="prettyprint" data-lang="latex">
+            \maketitle
+        </pre>
+    </article>
+      
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Structurer un document</h2>
+      <h3>Définir des sections</h3>
+    </hgroup>
+   
+      <article>
+          Définition d'une section :
+          <pre class="prettyprint" data-lang="latex">
+              \section{Mon super titre de section}
+          </pre>
+      </article>
+      <article>
+          Définition d'une sous section :
+          <pre class="prettyprint" data-lang="latex">
+              \subsection{Mon super titre de sous-section}
+          </pre>
+      </article>
+      <article>
+          Générer la table des matières correspondante :
+          <pre class="prettyprint" data-lang="latex">
+              \tableofcontents
+          </pre>
+      </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Notations mathématiques de base</h2>
+    </hgroup>
+   
+    <article>
+      <ul class="build">
+        <li><b>$</b> : entrer/sortir du mode maths</li>
+        <li><b>_</b> : mettre en indice</li>
+        <li><b>^</b> : mettre en exposant</li>
+      </ul>
+      <p>
+        <img src="../google_slides/images/warning.png" class="reflect" alt="Description" title="Description" width="70" height="70%" />
+        Attention à ces caractères hors du mode maths !
+      </p>
+      <p>Exemple :</p>
+        <pre class="prettyprint" data-lang="latex">
+            $x_{2}$
+            $y^{4}$
+            $f_{0}^{x}$
+        </pre>
+    </article>
+      
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Gestion des images</h2>
+    </hgroup>
+   
+    <article>
+        <ul class="build">
+            <li>\includegraphics[ < options > ]{ filepath }</li>
+            <li>environnement <b>figure</b></li>
+            <li>Légende : \caption{Légende}</li>
+            <li>Numérotation : \label{identifiant}</li>
+            <li>Citer dans le texte : \ref{identifiant}</li>
+            <li>
+        <pre class="prettyprint" data-lang="latex">
+            \begin{figure}[h]
+            \includegraphics[keepaspectratio,scale=0.4]{image.png}
+            \caption{Légende apportant des informations}
+            \label{mafigure}
+            \end{figure}
+            ...
+            Comme dans la figure \ref{mafigure}
+        </pre>
+           </li>
+    </article>
+  </slide>
+    
+    
+  <slide>
+      <hgroup>
+          <h2>Tout le reste</h2>
+      </hgroup>
+      
+      <article>
+          <p>Package = ensemble de fonctionnalités regroupées dans un fichier</p>
+          
+          <table>
+              <tr>
+                  <th>Package</th><th>Fonctionnalité principale</th>
+              </tr>
+              <tr>
+                  <td>graphicx</td><td>Mise en forme d'images</td>
+              </tr>
+              <tr>
+                  <td>listings</td><td>Mise en forme de code source</td>
+              </tr>
+              <tr>
+                  <td>babel</td><td>Gère la langue du document</td>
+              </tr>
+              <tr>
+                  <td>geometry</td><td>Gère les marges</td>
+              </tr>
+              <tr>
+                  <td>hyperref</td><td>Insertion de liens dans le document</td>
+              </tr>
+          </table>
+      </article>
+   </slide>
+  
+  <slide class="segue dark nobackground">
+    <aside class="gdbar right bottom"><img src="../google_slides/images/google_developers_icon_128.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>TP - Mise en forme d'un document</h2>
+    </hgroup>
+  </slide>
+    
+    <slide>
+        <hgroup>
+            <h2>Exercice</h2>
+        </hgroup>
+        <article>
+            <p>Reproduizez la mise en forme de ce document grâce à LaTeX :</p>
+	    <p>~passerat/enseignement/adl/seance2/tp2.pdf</p>
+	    <p>~passerat/enseignement/adl/seance2/material</p>
+        </article>
+    </slide>
+        
+    <slide class="thank-you-slide segue nobackground">
+    <aside class="gdbar right"><img src="../google_slides/images/google_developers_icon_128.png"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <h2>&lt;Merci !&gt;</h2>
+      <p>À la semaine prochaine :)</p>
+    </article>
+    <p class="auto-fadein" data-config-contact>
+      <!-- populated from slide_config.json -->
+    </p>
+  </slide>
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>
