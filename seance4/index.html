@@ -1,0 +1,341 @@
+<!--
+Google IO 2012 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahé <lukem@google.com>
+Modified by jH@CKtheRipper, 2/20/13	 
+
+URL: https://code.google.com/p/io-2012-slides
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ISIMA - Prep'ISIMA - Atelier de Génie Logiciel</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" media="all" href="../google_slides/theme/css/default.css">
+  <link rel="stylesheet" media="all" href="./custom.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="../google_slides/theme/css/phone.css">
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script src="./slide_config.js"></script> 
+  <script data-main="../google_slides/js/slides" src="../google_slides/js/require-1.0.8.min.js" ></script>
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+  <slide class="logoslide nobackground">
+    <article class="flexbox vcenter">
+      <span><img src="../google_slides/images/isima.png"></span>
+    </article>
+  </slide>
+
+  <slide class="title-slide segue nobackground">
+    <aside class="gdbar"><img src="../google_slides/images/google_developers_icon_128.png"></aside>
+    <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+    </hgroup>
+  </slide>
+
+
+  <slide class="segue dark nobackground">
+    <aside class="gdbar bottom"><img src="../google_slides/images/google_developers_icon_128.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Make</h2>
+      <h3>Outil de construction de projets</h3>
+    </hgroup>
+  </slide>
+
+    <slide>
+        <hgroup>
+            <h2>Pourquoi les Makefile ?</h2>
+        </hgroup>
+        <article>
+        <ul class="build fade">
+            <li>
+            <pre class="prettyprint" data-lang="bash">
+gcc foo.c bar.c -o foobar.exe
+            </pre>
+            </li>
+            <li>
+                <pre class="prettyprint" data-lang="bash">
+gcc *.c -I includeDirectory1 -I includeDirectory2 -L libraryDirectory -lm \
+-lfoo -lbar -o foobar.exe
+                </pre>
+            </li>
+            <li>Noyau Linux = ~20000 fichiers...</li>
+        </ul>
+        </article>
+    </slide>
+    
+  <slide>
+    <hgroup>
+      <h2>Structure d'un Makefile</h2>
+    </hgroup>
+    <article>
+       <p>3 éléments clés</p>
+      <ul class=build>
+        <li>Cible</li>
+        <li>Liste de dépendances</li>
+        <li>Règle</li>
+          <pre class="prettyprint" data-lang="bash">
+foobar.exe: foo.c bar.c
+<b> < TAB > </b>gcc foo.c bar.c -o foobar.exe
+          </pre>
+        </li>
+    </article>
+  </slide>
+
+    
+    <slide>
+        <hgroup>
+            <h2>Principe des Makefiles</h2>
+        </hgroup>
+        <article>
+            <ul class="build">
+                <li>Tabulation !</li>
+                <li>Parcouru de haut en bas</li>
+                <li>Variables et commentaires comme en Shell</li>
+                <li>
+                <pre class="prettyprint" data-lang="bash">
+CC = gcc
+                    
+foobar.exe: foo.c bar.c
+<b> < TAB > </b>$(CC) foo.c bar.c -o foobar.exe
+                </pre>
+                </li>
+            </ul>
+        </article>
+    </slide>
+    
+    
+    <slide>
+        <hgroup>
+            <h2>Variables spéciales</h2>
+        </hgroup>
+        <article>
+            <ul class="build">
+                <li><b>$<</b>  premier élément de la liste de dépendances</li>
+                    <li><b>$^</b> toute la liste de dépendances</li>
+                    <li><b>$@</b> cible</li>
+                <li>
+                    <pre class="prettyprint" data-lang="bash">
+CC = gcc
+                        
+foobar.exe: foo.c bar.c
+<b> < TAB > </b>$(CC) $^ -o $@
+                    </pre>
+                </li>
+            </ul>
+        </article>
+    </slide>
+    
+    <slide class="segue dark nobackground">
+        <aside class="gdbar right bottom"><img src="../google_slides/images/google_developers_icon_128.png"></aside>
+        <hgroup class="auto-fadein">
+            <h2>TP - Exercice 1</h2>
+        </hgroup>
+    </slide>
+    
+    <slide>
+        <hgroup>
+            <h2>Premier Makefile</h2>
+        </hgroup>
+        <article>
+            <ul>
+            <li>À partir de votre TP de C, créez un Makefile minimaliste permettant de le compiler</li>
+            <li>Vous devez donc créer un bloc { cible; dépendances; règle }</li>
+            <li>Vérifiez votre compréhension en ajoutant un deuxième bloc pour l'exécution de votre TP à travers le Makefile</li>
+            </ul>
+        </article>
+    </slide>
+
+    <slide class="segue dark nobackground">
+        <aside class="gdbar bottom"><img src="../google_slides/images/google_developers_icon_128.png"></aside>
+        <hgroup class="auto-fadein">
+            <h2>Make</h2>
+            <h3>Outil de construction de projets</h3>
+            <h4>(la suite...)</h4>
+        </hgroup>
+    </slide>
+    
+    <slide>
+        <hgroup>
+            <h2>Utilisation avancée des cibles</h2>
+        </hgroup>
+        <article>
+            <ul class="build">
+                <li>Les cibles peuvent être directement appelées depuis la ligne de commmandes</li>
+                <li>
+                    <pre class="prettyprint" data-lang="bash">
+foobar.exe: foo.c bar.c
+<b> < TAB > </b>$(CC) $^ -o $@
+                        
+jopasserat@vapula:/tmp$ make foobar.exe
+                    </pre>
+                </li>
+                
+                <li>Par défaut, la première cible est considérée</li>
+            </ul>
+        </article>
+    </slide>
+    
+    
+    <slide>
+        <hgroup>
+            <h2>Cibles courantes</h2>
+        </hgroup>
+        <article>
+            <table>
+                <tr>
+                    <th>Cible</th><th>Fonction classique</th>
+                </tr>
+                
+                <tr>
+                    <td>all</td><td>Construit l'ensemble du projet</td>
+                </tr>
+                
+                <tr>
+                    <td>install</td><td>Installe le résultat de la construction à l'emplacement prévu</td>
+                </tr>
+                <tr>
+                    <td>clean</td><td>Nettoie les fichiers intermédiaires du projet</td>
+                </tr>
+            </table>
+        </article>
+    </slide>
+    
+    <slide class="segue dark nobackground">
+        <aside class="gdbar right bottom"><img src="../google_slides/images/google_developers_icon_128.png"></aside>
+        <hgroup class="auto-fadein">
+            <h2>TP - Exercice 2</h2>
+        </hgroup>
+    </slide>
+    
+    <slide>
+        <hgroup>
+            <h2>Makefile et LaTeX</h2>
+        </hgroup>
+        <article>
+           <p><u> Nous allons créer un Makefile pour gérer la construction d'un document</u></p>
+            <ul>
+                <li>Copiez le dossier ~passerat/enseignement/adl/seance4/paper</li>
+                <li>Ce dossier contient un document LaTeX</li>
+                <li>La cible <b>all</b> construira l'ensemble du document</li>
+                <li>La cible <b>install</b> le copiera sur votre bureau</li>
+                <li>La cible <b>clean</b> supprimera les fichiers temporaires générés par LaTeX</li>
+            </ul>
+          <p> <u> Gestion de la bibliographie</u></p>
+            <ul>
+                <li>Ajouter une cible supplémentaire pour gérer la bibliographie (règle = <b>bibtex main</b>)</li>
+                <li>Modifiez le fichier main.bib qui la contient</li>
+                <li>La bibliographie ne doit être reconstruite que si le fichier main.bib a été modifié</li>
+            </ul>
+        </article>
+    </slide>
+    
+    <slide class="segue dark nobackground">
+        <aside class="gdbar bottom"><img src="../google_slides/images/google_developers_icon_128.png"></aside>
+        <hgroup class="auto-fadein">
+            <h2>Make</h2>
+            <h3>Outil de construction de projets</h3>
+            <h4>(...suite et fin !)</h4>
+        </hgroup>
+    </slide>
+    
+    <slide>
+        <hgroup>
+            <h2>Générer des Makefile</h2>
+        </hgroup>
+        <article>
+           <p> Les raisons </p>
+            <ul class="build">
+                <li>Pas agréable à écrire</li>
+                <li>Gestion de l'environnement ? (système, architecture, ...)</li>
+                <li>Éviter les erreurs...</li>
+            </ul>
+      
+        
+        <p> Les solutions </p>
+           <ul class="build">
+                <li>autotools</li>
+                <li>QMake (Qt Make)</li>
+                <li><b>CMake (Cross-platform Make)</b></li>
+            </ul>
+        </article>
+    </slide>
+
+    <slide class="segue dark nobackground">
+        <aside class="gdbar right bottom"><img src="../google_slides/images/google_developers_icon_128.png"></aside>
+        <hgroup class="auto-fadein">
+            <h2>TP - Exercice 3</h2>
+        </hgroup>
+    </slide>
+
+    <slide>
+        <hgroup>
+            <h2>Génération de Makefiles</h2>
+        </hgroup>
+        <article>
+            <p><u> autotools </u></p>
+            <ul>
+                <li>Téléchargez ce logiciel : http://www.iro.umontreal.ca/~simardr/testu01/TestU01.zip</li>
+                <li>Cette archive contient un logiciel géré par les autotools</li>
+                <li>Générez le Makefile (lancement du script configure)</li>
+                <li>Compilez</li>
+                <li>Installez dans un dossier tp_seance4 à la racine de votre compte</li>
+            </ul>
+            <p> <u> CMake </u></p>
+            <ul>
+                <li>Connectez-vous sur le serveur yoshi</li>
+                <li>Clonez le dépôt git suivant : git://github.com/jHackTheRipper/ShoveRand.git</li>
+                <li>Entrez dans le dossier et créez un répertoire build</li>
+                <li>Depuis votre nouveau répertoire build, appelez cmake en lui indiquant le répertoire contenant le fichier CmakeLists.txt</li>
+            </ul>
+                    
+        </article>
+    </slide>
+
+    
+    <slide>
+        <hgroup>
+            <h2>Conclusion</h2>
+        </hgroup>
+        <article>
+            <ul>
+                <li>Observez les 2 fichiers vous ayant permis de générer des Makefiles (configure et CMakeLists.txt)</li>
+                <li>Lequel vous semble le plus "utilisable" ?...</li>
+                <li>Concluez sur la solution la plus pertinente pour générer des Makefiles</li>
+            </ul>
+        </article>
+    </slide>
+    
+    <slide class="thank-you-slide segue nobackground">
+    <aside class="gdbar right"><img src="../google_slides/images/google_developers_icon_128.png"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <h2>&lt;Thanks!&gt;</h2>
+      <p>See you next week :)</p>
+    </article>
+    <p class="auto-fadein" data-config-contact>
+      <!-- populated from slide_config.json -->
+    </p>
+  </slide>
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>
