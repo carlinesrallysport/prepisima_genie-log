@@ -1,0 +1,341 @@
+<!--
+Google IO 2012 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahé <lukem@google.com>
+Modified by jH@CKtheRipper, 2/20/13	 
+
+URL: https://code.google.com/p/io-2012-slides
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ISIMA - Prep'ISIMA - Atelier de Génie Logiciel</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" media="all" href="../google_slides/theme/css/default.css">
+  <link rel="stylesheet" media="all" href="./custom.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="../google_slides/theme/css/phone.css">
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script src="./slide_config.js"></script> 
+  <script data-main="../google_slides/js/slides" src="../google_slides/js/require-1.0.8.min.js" ></script>
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+  <slide class="logoslide nobackground">
+    <article class="flexbox vcenter">
+      <span><img src="../google_slides/images/isima.png"></span>
+    </article>
+  </slide>
+
+  <slide class="title-slide segue nobackground">
+    <aside class="gdbar"><img src="../google_slides/images/google_developers_icon_128.png"></aside>
+    <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+    </hgroup>
+  </slide>
+
+
+  <slide class="segue dark nobackground">
+    <aside class="gdbar bottom"><img src="../google_slides/images/google_developers_icon_128.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Débogage</h2>
+      <h3>débuggage / debugging / ...</h3>
+    </hgroup>
+  </slide>
+
+    <slide>
+        <hgroup>
+            <h2>Qu'est-ce que le débogage ?</h2>
+        </hgroup>
+        <article>
+        <ul class="build">
+            <li>Insepcter un programme pour résoudre les problèmes</li>
+            <li>Afficher des valeurs</li>
+            <li>Avancer pas à pas dans les instructions</li>
+            <li>Modifier des valeurs à la volée</li>
+            <li>Reprendre l'exécution à un endroit précis'</li>
+        </ul>
+        </article>
+    </slide>
+    
+  <slide>
+    <hgroup>
+      <h2>Débogage printf</h2>
+    </hgroup>
+    <article>
+       <p>On peut déboguer avec <i>printf</i></p>
+       <p>Principe</p>
+      <ul class=build>
+        <li>Afficher des valeurs intermédiaires</li>
+        <li>Afficher des messages à un point de l'application</li>
+        <li><b>C'EST FAUX !</b></li>
+        <li>Intrusif</li>
+        <li>Limité</li>
+        <li>Ne fait pas gagner de temps</li>
+        <li>Laisse des traces</li>
+    </article>
+  </slide>
+
+    
+    <slide>
+        <hgroup>
+            <h2>GDB : GNU Debugger</h2>
+        </hgroup>
+        <article>
+            <ul class="build">
+                <li>Débuggueur ultra-répandu !</li>
+                <li>Interface en ligne de commandes</li>
+                <li>Interface graphique = <i>ddd</i></li>
+                <li>C, C++, Java, Fortran, ...</li>
+                <li>Logiciel libre</li>
+            </ul>
+        </article>
+    </slide>
+    
+    <slide class="fill nobackground" style="background-image: url(images/all.png)">
+        <hgroup>
+            <h2 class="white">Screenshot de DDD</h2>
+        </hgroup>
+    </slide>
+
+    
+    <slide>
+        <hgroup>
+            <h2>Utilisation basique de GDB</h2>
+        </hgroup>
+        <article>
+            <p>Compiler avec -g</p>
+            <p>
+                <pre class="prettyprint" data-lang="bash">
+gcc <b>-g</b> foo.c -o foo.exe
+                </pre>
+        </article>
+    </slide>
+    
+    <slide>
+        <hgroup>
+            <h2>Quelques commandes</h2>
+        </hgroup>
+        <article>
+            <ul class="build">
+                <li><b>run</b> lancer l'exécution du programme</li>
+                <li><b>p (print)</b> afficher la valeur d'une variable</li>
+                <li><b>b (break)</b> créer un point d'arrêt</li>
+                <li><b>d (delete)</b> supprimer un point d'arrêt</li>
+                <li><b>n (next)</b> exécuter la prochaine <b>ligne</b></li>
+                <li><b>s (step)</b> exécuter la prochaine <b>instruction</b></li>
+                <li><b>bt (backtrace)</b> afficher la liste des appels précédents</li>
+            </ul>
+        </article>
+    </slide>
+    
+    
+    <slide class="segue dark nobackground">
+        <aside class="gdbar right bottom"><img src="../google_slides/images/google_developers_icon_128.png"></aside>
+        <hgroup class="auto-fadein">
+            <h2>TP - Exercice 1</h2>
+        </hgroup>
+    </slide>
+    
+    <slide>
+        <hgroup>
+            <h2>Utilisation de GDB</h2>
+        </hgroup>
+        <article>
+            <ul>
+            <li>Récupérez le fichier source C dans ~passerat/enseignement/adl/seance5/foo.c</li>
+            <li>Ce code présente 2 erreurs (principales :), identifiez les à l'aide du débuggueur</li>
+            <li>Découvrez comment éviter l'une des erreurs en utilisant les "Yoda conditions"</li>
+            </ul>
+            <img src="images/yoda-logo.png"/>
+        </article>
+    </slide>
+
+    <slide>
+        <hgroup>
+            <h2>Rubber Duck Debugging</h2>
+        </hgroup>
+        <article>
+            <p>Principe : expliquer le code à son canard</p>
+            <ul class="build">
+                <li>Se munir d'un canard en plastique</li>
+                <li>Ouvrir un fichier de code problématique</li>
+                <li>Expliquer le code ligne après ligne au canard</li>
+                <li>Répéter le processus jusqu'à ce qu'une ligne ne corresponde pas à ce que vous expliquez</li>
+            </ul>
+            <img src="images/rubber_duck.jpg"/>
+        </article>
+    </slide>
+    
+    <slide class="segue dark nobackground">
+        <aside class="gdbar bottom"><img src="../google_slides/images/google_developers_icon_128.png"></aside>
+        <hgroup class="auto-fadein">
+            <h2>Documentation</h2>
+            <h3>Commentaires</h3>
+            <h3>Guide de style</h3>
+        </hgroup>
+    </slide>
+    
+    <slide>
+        <hgroup>
+            <h2>Commentaires</h2>
+        </hgroup>
+                <article>
+            <ul class="build">
+            <li>Commenter le code !</li>
+
+            <li><pre class="prettyprint" data-lang="c">
+// tant que i plus petit que 100
+while (i < 100) {
+    // multiplier i par lui meme
+    i = i * i;
+    ...
+}
+            </pre></li>
+
+            <li><h1>NON !</h1></li>
+            </ul>
+        </article>
+    </slide>
+    
+    <slide>
+        <hgroup>
+            <h2>Guide de style</h2>
+        </hgroup>
+        <article>
+            <ul class="build">
+                <li>Manière de présenter le code</li>
+                <li>Indentation</li>
+                <li>Sauts de lignes</li>
+                <li>Charte de nommage</li>
+                <li><pre class="prettyprint" data-lang="c">
+void tabFoisDeux ( float* <b>inoutTab</b>, int <b>inTailleTab</b> ) {
+  for (int i = 0; i < inTailleTab; ++i ) {
+    inoutTab[i] = inoutTab[i] * 2;
+  }
+}
+                        </pre></li>
+                
+                <li>Exemple : <a href="http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml">Google C++ Style Guide</a></li>
+            </ul>
+        </article>
+    </slide>
+    
+
+    <slide>
+        <hgroup>
+            <h2>Logiciels de génération de documentation</h2>
+        </hgroup>
+        <article>
+            <ul class="build">
+            <li>Générer de la documentation à partir du code et des commentaires</li>
+            <li>Doxygen</li>
+            <li>Javadoc</li>
+            <li>Scaladoc</li>
+                <li><pre class="prettyprint" data-lang="c++">
+<b>/**</b> Initialize the device so that a ParameterizedStatus status is created and copied
+* in device memory for every block used in the application.
+* MUST BE CALLED before any call to ShoveRand's features in device code.
+* <b>@param</b> block_num Number of CUDA blocks used in the application.
+* <b>@throw</b> std::runtime_error
+<b>*/</b>
+__host__
+static void init(unsigned int block_num) throw (std::runtime_error) {
+  // ParameterizedStatus initialization on both sides
+  status_host__ = new ParameterizedStatusType();
+  status_host__->setUp(block_num);
+            </pre></li>
+            </ul>
+        </article>
+    </slide>
+    
+    <slide>
+        <hgroup>
+            <h2>Doxygen</h2>
+        </hgroup>
+        <article>
+            <ul class="build">
+                <li>Configuration de la sortie avec un fichier Doxyfile</li>
+                <li>Commentaires spéciaux entre <b>/**</b> et <b>*/</b> (ou /// sur une seule ligne)</li>
+                <li>Balises commencent par <b>@</b> (ou <b>\</b>)</li>
+
+                <li><table>
+                <tr>
+                    <th>Balise</th><th>Fonction</th>
+                </tr>
+                
+                <tr>
+                    <td>@param</td><td>Paramètre d'entrée d'une fonction</td>
+                </tr>
+                
+                <tr>
+                    <td>@return</td><td>Valeur de retour d'une fonction</td>
+                </tr>
+                <tr>
+                    <td>@see</td><td>Renvoie vers une autre partie du code</td>
+                </tr>
+                <tr>
+                    <td>@file</td><td>Décrit le fichier source</td>
+                </tr>
+                <tr>
+                    <td>@author</td><td>Auteur du code</td>
+                </tr>
+            </table></li>
+            </ul>
+        </article>
+    </slide>
+    
+    <slide class="segue dark nobackground">
+        <aside class="gdbar right bottom"><img src="../google_slides/images/google_developers_icon_128.png"></aside>
+        <hgroup class="auto-fadein">
+            <h2>TP - Exercice 2</h2>
+        </hgroup>
+    </slide>
+    
+    <slide>
+        <hgroup>
+            <h2>Doxygen</h2>
+        </hgroup>
+        <article>
+            <ul>
+                <li>Documentez à l'aide de Doxygen votre TP de C</li>
+                <li>Générez le fichier de configuration Doxyfile avec l'outil <b>doxywizard</b></li>
+                <li>Générez la documentation associée</li>
+                <li>Constatez le résultat HTML, LaTeX, ...</li>
+            </ul>
+        </article>
+    </slide>
+    
+      
+    <slide class="thank-you-slide segue nobackground">
+    <aside class="gdbar right"><img src="../google_slides/images/google_developers_icon_128.png"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <h2>&lt;Thanks!&gt;</h2>
+      <p>See you in 2 weeks :)</p>
+    </article>
+    <p class="auto-fadein" data-config-contact>
+      <!-- populated from slide_config.json -->
+    </p>
+  </slide>
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>
