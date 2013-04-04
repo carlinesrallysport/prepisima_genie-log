@@ -64,7 +64,7 @@ URL: https://code.google.com/p/io-2012-slides
             <li>Afficher des valeurs</li>
             <li>Avancer pas à pas dans les instructions</li>
             <li>Modifier des valeurs à la volée</li>
-            <li>Reprendre l'exécution à un endroit précis'</li>
+            <li>Reprendre l'exécution à un endroit précis</li>
         </ul>
         </article>
     </slide>
@@ -81,9 +81,9 @@ URL: https://code.google.com/p/io-2012-slides
         <li>Afficher des messages à un point de l'application</li>
         <li><b>C'EST FAUX !</b></li>
         <li>Intrusif</li>
+        <li>Laisse des traces</li>
         <li>Limité</li>
         <li>Ne fait pas gagner de temps</li>
-        <li>Laisse des traces</li>
     </article>
   </slide>
 
@@ -105,7 +105,7 @@ URL: https://code.google.com/p/io-2012-slides
     
     <slide class="fill nobackground" style="background-image: url(images/all.png)">
         <hgroup>
-            <h2 class="white">Screenshot de DDD</h2>
+            <h2 class="red">Screenshot de DDD</h2>
         </hgroup>
     </slide>
 
@@ -130,11 +130,12 @@ gcc <b>-g</b> foo.c -o foo.exe
         <article>
             <ul class="build">
                 <li><b>run</b> lancer l'exécution du programme</li>
-                <li><b>p (print)</b> afficher la valeur d'une variable</li>
                 <li><b>b (break)</b> créer un point d'arrêt</li>
+                <li><b>p (print)</b> afficher la valeur d'une variable</li>
                 <li><b>d (delete)</b> supprimer un point d'arrêt</li>
                 <li><b>n (next)</b> exécuter la prochaine <b>ligne</b></li>
                 <li><b>s (step)</b> exécuter la prochaine <b>instruction</b></li>
+                <li><b>c (continue)</b> reprendre l'exécution jusqu'au prochain breakpoint ou la fin du programme</li>
                 <li><b>bt (backtrace)</b> afficher la liste des appels précédents</li>
             </ul>
         </article>
@@ -205,6 +206,26 @@ while (i < 100) {
             </pre></li>
 
             <li><h1>NON !</h1></li>
+            </ul>
+        </article>
+    </slide>
+
+     <slide>
+        <hgroup>
+            <h2>Commentaires</h2>
+        </hgroup>
+                <article>
+            <ul class="build">
+            <li>Commentaires utiles</li>
+
+            <li><pre class="prettyprint" data-lang="scala">
+// test metropolis criterion
+val deltaE = -2 * energy
+if ((deltaE <= 0) || (rng.nextDouble <= math.exp(-deltaE / kT) ) ) ((x, y), !spin)
+else inSpin
+            </pre></li>
+
+            <li><h1>OUI :)</h1></li>
             </ul>
         </article>
     </slide>
@@ -322,7 +343,7 @@ static void init(unsigned int block_num) throw (std::runtime_error) {
     <aside class="gdbar right"><img src="../google_slides/images/google_developers_icon_128.png"></aside>
     <article class="flexbox vleft auto-fadein">
       <h2>&lt;Thanks!&gt;</h2>
-      <p>See you in 2 weeks :)</p>
+      <p>See you on May, 6th :)</p>
     </article>
     <p class="auto-fadein" data-config-contact>
       <!-- populated from slide_config.json -->
